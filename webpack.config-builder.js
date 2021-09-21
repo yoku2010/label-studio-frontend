@@ -9,6 +9,15 @@ const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
 const ESLintPlugin = require('eslint-webpack-plugin');
 const { EnvironmentPlugin } = require("webpack");
 
+process.env['NODE_ENV'] = 'production';
+process.env['WORK_DIR'] = '/Users/yogeshkumar/Development/highiq/oscar/hub/src/assets/label-studio-frontend';
+process.env['BUILD_MODULE'] = 'production';
+process.env['BUILD_NO_MINIMIZATION'] = '';
+process.env['BUILD_NO_CHUNKS'] = 'true';
+process.env['BUILD_NO_HASH'] = 'true';
+process.env['BUILD_MODULE'] = '';
+process.env['BUILD_DIAGNOSTICS'] = '';
+
 const workingDirectory = process.env.WORK_DIR
   ? path.resolve(__dirname, process.env.WORK_DIR)
   : path.resolve(__dirname, "build");
@@ -46,13 +55,13 @@ const LOCAL_ENV = {
 const babelOptimizeOptions = () => {
   return BUILD.NO_MINIMIZE
     ? {
-        compact: false,
-        cacheCompression: false,
-      }
+      compact: false,
+      cacheCompression: false,
+    }
     : {
-        compact: true,
-        cacheCompression: true,
-      };
+      compact: true,
+      cacheCompression: true,
+    };
 };
 
 const optimizer = () => {
@@ -80,7 +89,7 @@ const optimizer = () => {
 
   if (BUILD.NO_CHUNKS) {
     result.runtimeChunk = false;
-    result.splitChunks = {cacheGroups: { default: false }}
+    result.splitChunks = { cacheGroups: { default: false } }
   }
 
   return result;
@@ -253,7 +262,7 @@ if (BUILD.DIAGNOSTICS) {
 
 const sourceMap = isDevelopment ? "cheap-module-source-map" : "source-map";
 
-module.exports = ({withDevServer = true} = {}) => ({
+module.exports = ({ withDevServer = true } = {}) => ({
   mode: DEFAULT_NODE_ENV || "development",
   devtool: sourceMap,
   ...(withDevServer ? devServer() : {}),

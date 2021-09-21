@@ -6,6 +6,10 @@
   border-radius: 0.28571429rem;
   width: fit-content;
   padding: 0.5em;
+  &.right {
+    position: absolute;
+    right: 0;
+  }
 }
 
 .block:empty {

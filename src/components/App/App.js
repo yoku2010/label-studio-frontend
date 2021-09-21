@@ -94,7 +94,7 @@ class App extends Component {
     );
   }
 
-  _renderUI(root, as) {
+  _renderUI(root, as, settings) {
     return (
       <>
         {!as.viewingAllAnnotations && !as.viewingAllPredictions && (
@@ -105,7 +105,7 @@ class App extends Component {
           >
             <Elem name="annotation">
               {Tree.renderItem(root)}
-              {this.renderRelations(as.selected)}
+              {settings.showRelations && this.renderRelations(as.selected)}
             </Elem>
             {getRoot(as).hasInterface('infobar') && (
               <Elem name="infobar">
@@ -161,7 +161,7 @@ class App extends Component {
 
     if (!root) return this.renderNoAnnotation();
 
-    const viewingAll = as.viewingAllAnnotations || as.viewingAllPredictions;
+    const viewingAll = as.viewingAllAnnotations || as.viewingAllPredictions || store.hasInterface("no-side-column");
     const stEditor = settings.fullscreen ? styles.editorfs : styles.editor;
     const stCommon = [
       settings.bottomSidePanel ? styles.commonbsp : styles.common,
@@ -194,7 +194,7 @@ class App extends Component {
                 allowViewAll={store.hasInterface('annotations:view-all')}
               />
               {as.validation === null
-                ? this._renderUI(as.selectedHistory?.root ?? root, as)
+                ? this._renderUI(as.selectedHistory?.root ?? root, as, settings)
                 : this.renderConfigValidationException(store)}
             </div>
             {(viewingAll === false) && (

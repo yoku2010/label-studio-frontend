@@ -54,7 +54,8 @@ const SettingsModel = types
     showAnnotationsPanel: types.optional(types.boolean, true),
 
     showPredictionsPanel: types.optional(types.boolean, true),
-    // showScore: types.optional(types.boolean, false),
+    showScore: types.optional(types.boolean, false),
+    showRelations: types.optional(types.boolean, true),
   })
   .views(self => ({
     get annotation() {
@@ -96,9 +97,13 @@ const SettingsModel = types
       });
     },
 
-    //   toggleShowScore() {
-    //       self.showScore = !self.showScore;
-    // },
+    toggleShowScore() {
+      self.showScore = !self.showScore;
+    },
+
+    toggleShowRelations() {
+      self.showRelations = !self.showRelations;
+    },
 
     toggleShowLabels() {
       self.showLabels = !self.showLabels;

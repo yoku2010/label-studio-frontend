@@ -182,7 +182,7 @@ const LabelOnEllipse = observer(({ item, color, strokewidth }) => {
       text={labelText}
       score={item.score}
       showLabels={getRoot(item).settings.showLabels}
-      showScore={getRoot(item).settings.showLabels}
+      showScore={getRoot(item).settings.showScore}
       zoomScale={item.parent.zoomScale}
       color={color}
       onClickLabel={item.onClickLabel}
@@ -206,7 +206,7 @@ const LabelOnRect = observer(({ item, color, strokewidth }) => {
       text={labelText}
       score={item.score}
       showLabels={getRoot(item).settings.showLabels}
-      showScore={getRoot(item).settings.showLabels}
+      showScore={getRoot(item).settings.showScore}
       zoomScale={item.parent.zoomScale}
       rotation={item.rotation}
       color={color}

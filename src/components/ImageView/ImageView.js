@@ -460,8 +460,14 @@ export default observer(
 
       if (cs.viewingAllAnnotations || cs.viewingAllPredictions) return null;
 
+      let blockClassName = styles.block;
+
+      if (store.hasInterface("image-center")) {
+        blockClassName += ` ${styles.right}`;
+      }
+
       return (
-        <div className={styles.block}>
+        <div className={blockClassName}>
           {item
             .getToolsManager()
             .allTools()
@@ -507,7 +513,7 @@ export default observer(
             position: "relative",
             display: "flex",
             alignItems: "flex-start",
-            justifyContent: "space-between",
+            justifyContent: store.hasInterface("image-center") && "center" || "space-between",
           }}
         >
           <div
@@ -540,7 +546,7 @@ export default observer(
               ref={ref => {
                 item.setStageRef(ref);
               }}
-              style={{ position: "absolute", top: 0, left: 0, brightness: "150%" }}
+              style={{ position: "absolute", top: 0, brightness: "150%", ...(store.hasInterface("image-center") && {} || { left: 0 }) }}
               className={"image-element"}
               width={item.stageComponentSize.width}
               height={item.stageComponentSize.height}

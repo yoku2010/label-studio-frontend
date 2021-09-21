@@ -278,7 +278,7 @@ export function rgbaChangeAlpha(rgba, alpha) {
 
 // given number from 0.00 to 1.00 return a color from red to green
 export function getScaleGradient(number) {
-  return gradients[Math.ceil(number * 30)];
+  return gradients[Math.ceil(number * 0.3)];
 }
 
 /**
