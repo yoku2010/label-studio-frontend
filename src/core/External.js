@@ -68,6 +68,12 @@ function onStorageInitialized(ls) {}
 
 function onSubmitDraft(entity) {}
 
+function onZoom(item) {}
+
+function onPositionChange(posx, posy) {}
+
+function onRotate(degree) {}
+
 export default {
   onDeleteAnnotation,
   onEntityCreate,
@@ -83,4 +89,7 @@ export default {
   onAcceptAnnotation,
   onRejectAnnotation,
   onStorageInitialized,
+  onZoom,
+  onPositionChange,
+  onRotate,
 };

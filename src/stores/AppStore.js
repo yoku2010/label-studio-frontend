@@ -171,6 +171,18 @@ export default types
       return (self.showComments = state);
     }
 
+    function zoom(item) {
+      getEnv(self).events.invoke('zoom', item);
+    }
+
+    function positionChange(posx, posy) {
+      getEnv(self).events.invoke('positionChange', posx, posy);
+    }
+
+    function rotate(degree) {
+      getEnv(self).events.invoke('rotate', degree);
+    }
+
     /**
      * Function
      */
@@ -518,6 +530,9 @@ export default types
 
       showModal,
       toggleComments,
+      zoom,
+      positionChange,
+      rotate,
       toggleSettings,
       toggleDescription,
     };

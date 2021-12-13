@@ -73,6 +73,9 @@ function configureApplication(params) {
     onAcceptAnnotation: params.onAcceptAnnotation || External.onAcceptAnnotation,
     onRejectAnnotation: params.onRejectAnnotation || External.onRejectAnnotation,
     onStorageInitialized: params.onStorageInitialized || External.onStorageInitialized,
+    onZoom: params.onZoom || External.onZoom,
+    onPositionChange: params.onPositionChange || External.onPositionChange,
+    onRotate: params.onRotate || External.onRotate,
   };
 
   return options;

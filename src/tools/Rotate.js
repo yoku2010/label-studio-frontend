@@ -41,6 +41,7 @@ const _Tool = types
   .actions(self => ({
     rotate(degree) {
       self.obj.rotate(degree);
+      window.Htx.rotate(degree);
     },
   }));
 

@@ -69,6 +69,7 @@ const _Tool = types
       let posy = item.zoomingPositionY + ev.movementY;
 
       item.setZoomPosition(posx, posy);
+      window.Htx.positionChange(posx, posy);
     },
 
     mousemoveEv(ev) {
@@ -86,6 +87,7 @@ const _Tool = types
       const item = self._manager.obj;
 
       item.handleZoom(val);
+      window.Htx.zoom(item);
     },
   }));
 
